@@ -1,12 +1,12 @@
 const activity = require('./model/activity.schema')
 
 exports.create=(req,res)=>{
-    let newactivity = new activity({
+    let newActivity = new activity({
         name:req.body.name,
         points:req.body.points,
     })
 
-    newactivity.save((err,data)=>{
+    newActivity.save((err,data)=>{
         if (err) res.status(400).send(err);
         
         res.status(201).send(data)

@@ -26,7 +26,7 @@ exports.update=(req,res)=>{
         if (err) res.status(400).send(err);
 
         if (data === null){
-            res.status(404).send("No data found with user id "+ req.params.id)
+            res.status(404).send("No data found with activity id "+ req.params.id)
         }else{
             res.send(data)
         }

@@ -16,7 +16,7 @@ exports.create = (req, res) => {
 exports.list = (req, res) => {
     var year = req.params.year
     var month = req.params.month
-    
+
     employeeActivity.aggregate([
         {
             $match: {
@@ -71,4 +71,41 @@ exports.list = (req, res) => {
         res.send(data)
     })
         
+}
+
+
+exports.listById = (req, res) => {
+    var year = req.params.year
+    var month = req.params.month
+    var empId = req.params.empId
+    
+    employeeActivity.find({ 
+        employeeId: empId,
+        completedAt: {
+            $gte: new Date(`${year}-${month}-01`),
+            $lt: new Date(`${year}-${parseInt(month)+1}-01`)
+        }
+    })
+    .populate('activityId')
+    .select({__v:0, employeeId:0})
+    .exec((err,data)=>{
+        if (err) res.status(400).send(err);
+
+        res.send(data)
+    })
+}
+
+exports.updateDate = (req, res) => {
+    var data = {
+        completedAt:new Date(req.body.date)
+    }
+    employeeActivity.findByIdAndUpdate(req.params.id, data, (err, data) => {
+        if (err) res.status(400).send(err);
+
+        if (data === null){
+            res.status(404).send("No data found with id "+ req.params.id)
+        }else{
+            res.send(data)
+        }
+    });
 }

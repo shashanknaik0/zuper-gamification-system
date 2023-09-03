@@ -4,11 +4,13 @@ const schema = mongoose.Schema;
 employeeActivitySchema = new schema({
     employeeId:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'employee'
+        ref : 'employee',
+        required: true,
     },
     activityId:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'activity'
+        ref : 'activity',
+        required: true,
     },
     completedAt: {
 		type: Date,

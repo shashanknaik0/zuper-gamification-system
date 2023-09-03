@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 employeeActivitySchema = new schema({
-    employeeId:{
+    employee:{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'employee',
         required: true,
@@ -14,7 +14,7 @@ employeeActivitySchema = new schema({
             message: 'Invalid employeeId, employee does not exist.',
         },
     },
-    activityId:{
+    activity:{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'activity',
         required: true,
@@ -32,5 +32,5 @@ employeeActivitySchema = new schema({
 	}
 })
 
-employeeActivity= mongoose.model('employeeActivity',employeeActivitySchema);
+employeeActivity= mongoose.model('employeeActivities',employeeActivitySchema);
 module.exports = employeeActivity;

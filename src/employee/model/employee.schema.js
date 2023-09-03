@@ -2,12 +2,16 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 employeeSchema = new schema({
-    name:String,
+    name:{
+        type : String,
+        required: true,
+    },
     email:{
         type:String,
-        unique:true
+        unique:true,
+        required: true,
     },
 })
 
-employee = mongoose.model('employee',employeeSchema);
+employee = mongoose.model('employees',employeeSchema);
 module.exports = employee;

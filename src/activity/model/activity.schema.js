@@ -2,9 +2,15 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 activitySchema = new schema({
-    name: String,
-    points: Number,
+    name:{
+        type : String,
+        required: true,
+    },
+    points:{
+        type : String,
+        required: true,
+    },
 })
 
-activity= mongoose.model('activity',activitySchema);
+activity= mongoose.model('activities',activitySchema);
 module.exports = activity;

@@ -17,13 +17,14 @@ cd zuper-gamification-system
 <hr>
 <h2>Install dependecies</h2>
 
-step 1: use below cammand install dependecies from <code>package.json</code>
+use below cammand install dependecies from <code>package.json</code>
 <pre>
 npm install
 </pre>
 
 <hr>
 <h2>Seed some data to database</h2>
+before seeding data make sure that you have installed MongoDB database and it is running in mongodb://127.0.0.1:27017
 <pre>
 npm run seed
 </pre>

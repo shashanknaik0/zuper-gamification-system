@@ -8,6 +8,8 @@ module.exports = () =>{
         useUnifiedTopology:true
     })
 
+    mongoose.set('useCreateIndex', true) // to remove (node:8172) Deprecation
+
     db = mongoose.connection
     db.on('error', console.error.bind("Database connection error"))
     db.once('open', () => {

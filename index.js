@@ -11,6 +11,9 @@ app.use(express.urlencoded({
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
 
+//to pretty print json response
+app.set('json spaces', 2)
+
 const mongodbSetup = require('./helper/mongodb')
 mongodbSetup()
 

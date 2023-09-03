@@ -4,11 +4,11 @@ const schema = mongoose.Schema;
 employeeActivitySchema = new schema({
     employee:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'employee',
+        ref : 'employees',
         required: true,
         validate: {
             validator: async function (value) {
-                const employee = await mongoose.model('employee').findById(value);
+                const employee = await mongoose.model('employees').findById(value);
                 return employee !== null;
             },
             message: 'Invalid employeeId, employee does not exist.',
@@ -16,11 +16,11 @@ employeeActivitySchema = new schema({
     },
     activity:{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'activity',
+        ref : 'activities',
         required: true,
         validate: {
             validator: async function (value) {
-                const employee = await mongoose.model('activity').findById(value);
+                const employee = await mongoose.model('activities').findById(value);
                 return employee !== null;
             },
             message: 'Invalid activityId, activity does not exist.',

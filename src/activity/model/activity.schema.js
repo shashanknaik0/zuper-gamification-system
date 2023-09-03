@@ -7,7 +7,7 @@ activitySchema = new schema({
         required: true,
     },
     points:{
-        type : String,
+        type : Number,
         required: true,
     },
 })

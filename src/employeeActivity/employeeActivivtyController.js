@@ -53,7 +53,7 @@ exports.list = (req, res) => {
               _id: '$employee._id',
               employee: { $first: '$employee' },
               totalScore: {
-                $sum: { $ifNull: ['$activity.points', 0] },
+                $sum: '$activity.points',
               },
             },
           },

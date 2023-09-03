@@ -19,7 +19,7 @@ module.exports = (app) =>{
     router.delete('/activity/:id', activity.delete)
 
     router.post('/employeeActivity', employeeActivity.create)
-    router.get('/employeeActivity/:year/:month', employeeActivity.list)
+    router.get('/leaderboard/:year/:month', employeeActivity.list)
 
     app.use(router)
 }

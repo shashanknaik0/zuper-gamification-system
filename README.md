@@ -38,12 +38,12 @@ npm start
 
 <hr>
 <h2>API end points</h2>
-<p>
+    
     (post) '/employee' - create employee - req body format = JSON {name:string, email:string}
     (get) '/employee' - list all employee 
     (put) '/employee/:id' - update employee - req body format = JSON {name:string, email:string}
     (delete) '/employee/:id' - delete employee
-    
+
     (post) '/activity' -  create activity - req body format = JSON {name:string, points:number}
     (get) '/activity' -  list all employee 
     (put) '/activity/:id' -  update employee - req body format = JSON {name:string, points:number}
@@ -52,5 +52,4 @@ npm start
     (post) '/employeeActivity' - create employee activity - req body format = JSON {employeeId:ObjectID, activityId:ObjectID}
     (get) '/employeeActivity/:year/:month' - employee leaderboard by month and year
     (get) '/employeeActivity/:year/:month/:empId' -  get all activity done by perticular employee
-    (patch) '/employeeActivity/:id' -  upadate date feild for mentioned employeeActivity id
-</p>
+    (patch) '/employeeActivity/:id' -  upadate date feild for mentioned employeeActivity id - req body format = JSON {date:YYYY-MM-DD}

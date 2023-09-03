@@ -2,6 +2,7 @@ module.exports = (app) =>{
     router = require('express').Router()
     employee = require('../src/employee/employeeController')
     activity = require('../src/activity/activityController')
+    employeeActivity = require('../src/employeeActivity/employeeActivivtyController')
 
     router.get('/',(req,res)=>{
         res.send('hello word')
@@ -16,6 +17,8 @@ module.exports = (app) =>{
     router.get('/activity', activity.read)
     router.put('/activity/:id', activity.update)
     router.delete('/activity/:id', activity.delete)
-    
+
+    router.post('/employeeActivity', employeeActivity.create)
+
     app.use(router)
 }

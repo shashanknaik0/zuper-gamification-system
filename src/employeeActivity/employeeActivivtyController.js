@@ -2,8 +2,8 @@ const employeeActivity = require('./model/employeeActivity.schema')
 
 exports.create = (req, res) => {
     let newEmployeeActivity = new employeeActivity({
-        employeeId: req.body.employeeId,
-        activityId: req.body.activityId,
+        employee: req.body.employeeId,
+        activity: req.body.activityId,
     })
 
     newEmployeeActivity.save((err, data) => {
@@ -29,7 +29,7 @@ exports.list = (req, res) => {
         {
             $lookup: {
                 from: 'activities',
-                localField: 'activityId',
+                localField: 'activity',
                 foreignField: '_id',
                 as: 'activity',
             },
@@ -37,7 +37,7 @@ exports.list = (req, res) => {
         {
             $lookup: {
               from: 'employees',
-              localField: 'employeeId',
+              localField: 'employee',
               foreignField: '_id',
               as: 'employee',
             },
@@ -80,13 +80,13 @@ exports.listById = (req, res) => {
     var empId = req.params.empId
     
     employeeActivity.find({ 
-        employeeId: empId,
+        employee: empId,
         completedAt: {
             $gte: new Date(`${year}-${month}-01`),
             $lt: new Date(`${year}-${parseInt(month)+1}-01`)
         }
     })
-    .populate('activityId')
+    .populate('activity')
     .select({__v:0, employeeId:0})
     .exec((err,data)=>{
         if (err) res.status(400).send(err);
